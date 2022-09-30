@@ -1,4 +1,4 @@
-import { postBook, getBooks, getBook, updateBook, deleteBook } from '../services/books.services';
+import { postBook, getBooks, getBook, updateBook, deleteBook, searchBook } from '../services/books.services';
 import { Request, Response } from 'express';
 
 export const postBookController = async (req: Request, res: Response) => {
@@ -70,3 +70,13 @@ export const deleteBookController = async (req: Request, res: Response) => {
     }
 }
 
+export const searchBookController = async (req: Request, res: Response) => {
+    const { title, author, genre } = req.params;
+    try {
+        const book = await searchBook(title, author, genre);
+        if (!book) {
+            return res.status(404).json({ message: 'Book not found' });
+        }
+        return res.status(200).json(book);
+    }
+}
