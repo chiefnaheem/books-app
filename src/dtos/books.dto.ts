@@ -1,6 +1,6 @@
-import { IsString, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 
-export class BooksDto {
+export class PostBooksDto {
     @IsString()
     @IsNotEmpty()
     title!: string;
@@ -11,5 +11,19 @@ export class BooksDto {
 
     @IsString()
     @IsNotEmpty()
+    genre!: string;
+}
+
+export class UpdateBooksDto {
+    @IsString()
+    @IsOptional()
+    title!: string;
+
+    @IsString()
+    @IsOptional()
+    author!: string;
+
+    @IsString()
+    @IsOptional()
     genre!: string;
 }

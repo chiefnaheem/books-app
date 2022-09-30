@@ -3,12 +3,29 @@ import { Request, Response } from 'express';
 
 const prisma = new PrismaClient();
 
-export const postBook = async (req: Request, res: Response) => {
-    const { title, author, genre } = req.body;
-    if (!title || !author || !genre) {
-        return res.status(400).json({ message: 'Missing fields' });
-    }
-    try {
+// export const postBook = async (req: Request, res: Response) => {
+//     const { title, author, genre } = req.body;
+//     if (!title || !author || !genre) {
+//         return res.status(400).json({ message: 'Missing fields' });
+//     }
+//     try {
+//         const newBook = await prisma.book.create({
+//             data: {
+//                 title,
+//                 author,
+//                 genre,
+//             },
+//         });
+//         return res.status(200).json(newBook);
+//     }
+//     catch (err: any) {
+//         return res.status(500).json({ message: err.message });
+//     }
+// };
+
+export const postBook = async (title: string, author: string, genre: string) => {
+    try{
+
         const newBook = await prisma.book.create({
             data: {
                 title,
@@ -16,59 +33,42 @@ export const postBook = async (req: Request, res: Response) => {
                 genre,
             },
         });
-        return res.status(200).json(newBook);
+        return newBook;
     }
     catch (err: any) {
-        return res.status(500).json({ message: err.message });
+        return err;
     }
 };
 
-export const getBooks = async (req: Request, res: Response) => {
+export const getBooks = async () => {
     try {
         const books = await prisma.book.findMany();
-        return res.status(200).json(books);
+        return books;
     }
     catch (err: any) {
-        return res.status(500).json({ message: err.message });
+        return err;
     }
-}
+};
 
-export const getBook = async (req: Request, res: Response) => {
-    const { id } = req.params;
+export const getBook = async (id: number) => {
     try {
         const book = await prisma.book.findUnique({
             where: {
-                id: parseInt(id),
+                id,
             },
         });
-        if (!book) {
-            return res.status(404).json({ message: 'Book not found' });
-        }
-        return res.status(200).json(book);
+        return book;
     }
     catch (err: any) {
-        return res.status(500).json({ message: err.message });
+        return err;
     }
-}
+};
 
-export const updateBook = async (req: Request, res: Response) => {
-    const { id } = req.params;
-    const { title, author, genre } = req.body;
-    if (!title || !author || !genre) {
-        return res.status(400).json({ message: 'Missing fields' });
-    }
+export const updateBook = async (id: number, title: string, author: string, genre: string) => {
     try {
-        const book = await prisma.book.findUnique({
+        const book = await prisma.book.update({
             where: {
-                id: parseInt(id),
-            },
-        });
-        if (!book) {
-            return res.status(404).json({ message: 'Book not found' });
-        }
-        const updatedBook = await prisma.book.update({
-            where: {
-                id: parseInt(id),
+                id,
             },
             data: {
                 title,
@@ -76,117 +76,99 @@ export const updateBook = async (req: Request, res: Response) => {
                 genre,
             },
         });
-        return res.status(200).json(updatedBook);
+        return book;
     }
     catch (err: any) {
-        return res.status(500).json({ message: err.message });
+        return err;
+    }
+};
+
+export const deleteBook = async (id: number) => {
+    try {
+        const book = await prisma.book.delete({
+            where: {
+                id,
+            },
+        });
+        return book;
+    }
+    catch (err: any) {
+        return err;
     }
 }
 
-export const deleteBook = async (req: Request, res: Response) => {
-    const { id } = req.params;
+export const searchBook = async (title: string, genre: string, author: string) => {
     try {
-        const book = await prisma.book.findUnique({
-            where: {
-                id: parseInt(id),
-            },
-        });
-        if (!book) {
-            return res.status(404).json({ message: 'Book not found' });
-        }
-        const deletedBook = await prisma.book.delete({
-            where: {
-                id: parseInt(id),
-            },
-        });
-        return res.status(200).json(deletedBook);
-    }
-    catch (err: any) {
-        return res.status(500).json({ message: err.message });
-    }
-}
-
-export const searchBook = async (req: Request, res: Response) => {
-    const { title, author, genre } = req.body;
-    if (!title && !author && !genre) {
-        return res.status(400).json({ message: 'Missing fields' });
-    }
-    try {
-        const books = await prisma.book.findMany({
-            where: {
-                OR: [
-                    {
-                        title: {
-                            contains: title,
-                        },
-                    },
-                    {
-                        author: {
-                            contains: author,
-                        },
-                    },
-                    {
-                        genre: {
-                            contains: genre,
-                        },
-                    },
-                ],
-            },
-        });
-        return res.status(200).json(books);
-    }
-    catch (err: any) {
-        return res.status(500).json({ message: err.message });
-    }
-}
-
-export const getBooksByGenre = async (req: Request, res: Response) => {
-    const { genre } = req.params;
-    try {
-        const books = await prisma.book.findMany({
-            where: {
-                genre: {
-                    contains: genre,
-                },
-            },
-        });
-        return res.status(200).json(books);
-    }
-    catch (err: any) {
-        return res.status(500).json({ message: err.message });
-    }
-}
-
-export const getBooksByAuthor = async (req: Request, res: Response) => {
-    const { author } = req.params;
-    try {
-        const books = await prisma.book.findMany({
-            where: {
-                author: {
-                    contains: author,
-                },
-            },
-        });
-        return res.status(200).json(books);
-    }
-    catch (err: any) {
-        return res.status(500).json({ message: err.message });
-    }
-}
-
-export const getBooksByTitle = async (req: Request, res: Response) => {
-    const { title } = req.params;
-    try {
-        const books = await prisma.book.findMany({
+        const book = await prisma.book.findMany({
             where: {
                 title: {
                     contains: title,
+                    mode: 'insensitive',
+                },
+                genre: {
+                    contains: genre,
+                    mode: 'insensitive',
+                },
+                author: {
+                    contains: author,
+                    mode: 'insensitive',
                 },
             },
         });
-        return res.status(200).json(books);
+        return book;
     }
     catch (err: any) {
-        return res.status(500).json({ message: err.message });
+        return err;
+    }
+} 
+
+export const getBookByGenre = async (genre: string) => {
+    try {
+        const book = await prisma.book.findMany({
+            where: {
+                genre: {
+                    contains: genre,
+                    mode: 'insensitive',
+                },
+            },
+        });
+        return book;
+    }
+    catch (err: any) {
+        return err;
+    }
+}
+
+export const getBookByAuthor = async (author: string) => {
+    try {
+        const book = await prisma.book.findMany({
+            where: {
+                author: {
+                    contains: author,
+                    mode: 'insensitive',
+                },
+            },
+        });
+        return book;
+    }
+    catch (err: any) {
+        return err;
+    }
+}
+
+export const getBookByTitle = async (title: string) => {
+    try {
+        const book = await prisma.book.findMany({
+            where: {
+                title: {
+                    contains: title,
+                    mode: 'insensitive',
+                },
+            },
+        });
+        return book;
+    }
+    catch (err: any) {
+        return err;
     }
 }
