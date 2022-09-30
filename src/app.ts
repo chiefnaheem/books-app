@@ -4,7 +4,8 @@ import path from 'path'
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import cors from 'cors'
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+import router from './routes/index';
 
 const app = express();
 
@@ -15,32 +16,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors())
-
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'jade');
 
-
 //Routes
-// app.use('/api/v1/auth', authRouter);
+app.use('/api/v1', router);
 
 
 app.use("/testing", (req: Request, res: Response, next: NextFunction) => {
   res.send('Hi there')
-})
-
-// console.log(process.env.NODE_ENV)
-// if (process.env.NODE_ENV === 'test') {
-//   connectTestDB()
-// }
-// else{
-//   connectDB()
-// }
-// app.get('/test', (req: any,res: any)=>{
-//   res.send({data:'api working'})
-// })
+});
 
 // catch 404 and forward to error handler
 app.use(function(req:Request, res:Response, next:NextFunction) {
