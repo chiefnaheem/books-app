@@ -4,7 +4,8 @@ import path from 'path'
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import cors from 'cors'
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+import router from './routes/index';
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.set('view engine', 'jade');
 
 
 //Routes
-// app.use('/api/v1/auth', authRouter);
+app.use('/api/v1', router);
 
 
 app.use("/testing", (req: Request, res: Response, next: NextFunction) => {
