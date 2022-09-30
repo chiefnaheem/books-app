@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "CI= node ./bin/www",
-    "start:dev": "nodemon ./bin/www",
-    "dev": "yarn && yarn prettier:fix && yarn build && nodemon ./bin/www",
+    "start:dev": "node ./bin/www",
+    "dev": "yarn && yarn prettier:fix && yarn build && node ./bin/www",
     "compile": "yarn tsc -w",
     "build": "tsc",
     "clean": "rm -rf dist && mkdir dist",
