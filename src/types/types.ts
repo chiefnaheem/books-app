@@ -1,8 +1,8 @@
-export interface PrismaClientKnownRequestError extends Error {
-    code: string;
-    clientVersion: string;
-    meta?: Record<string, any>;
-}
+// export interface PrismaClientKnownRequestError extends Error {
+//     code: string;
+//     clientVersion: string;
+//     meta?: Record<string, any>;
+// }
 
 export interface Books {
     id?: number;
