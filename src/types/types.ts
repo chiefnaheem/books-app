@@ -5,9 +5,15 @@ export interface PrismaClientKnownRequestError extends Error {
 }
 
 export interface Books {
-    id: number;
+    id?: number;
     title: string;
     author: string;
     genre: string;
-    published_at: Date;
+    published_at?: Date;
+}
+
+export interface ISearch {
+    title: string;
+    genre: string;
+    author: string;
 }

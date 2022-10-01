@@ -1,5 +1,7 @@
-import { postBook, getBooks, getBook, updateBook, deleteBook, searchBook } from '../services/books.services';
+import { postBook, getBooks, getBook, updateBook, deleteBook, getBookByAuthor, getBookByGenre, getBookByTitle, searchBooks } from '../services/books.services';
 import { Request, Response } from 'express';
+import { ISearch } from '../types/types';
+
 
 export const postBookController = async (req: Request, res: Response) => {
     const { title, author, genre } = req.body;
@@ -70,16 +72,49 @@ export const deleteBookController = async (req: Request, res: Response) => {
     }
 }
 
-export const searchBookController = async (req: Request, res: Response) => {
-    const { title, author, genre } = req.params;
+
+export const getBooksByAuthor = async (req: Request, res: Response) => {
+    const { author } = req.body;
     try {
-        const book = await searchBook(title, author, genre);
-        if (!book) {
-            return res.status(404).json({ message: 'Book not found' });
-        }
-        return res.status(200).json(book);
+        const books = await getBookByAuthor(author);
+        return res.status(200).json(books);
     }
     catch (err: any) {
         return res.status(500).json({ message: err.message });
-    };
+    }
+}
+
+export const getBooksByGenre = async (req: Request, res: Response) => {
+    const { genre } = req.body;
+    try {
+        const books = await getBookByGenre(genre);
+        return res.status(200).json(books);
+    }
+    catch (err: any) {
+        return res.status(500).json({ message: err.message });
+    }
+}
+
+export const getBooksByTitle = async (req: Request, res: Response) => {
+    const { title } = req.body;
+    try {
+        const books = await getBookByTitle(title);
+        return res.status(200).json(books);
+    }
+    catch (err: any) {
+        return res.status(500).json({ message: err.message });
+    }
+}
+
+export const searchBooksController = async (req: Request, res: Response) => {
+    const search = req.query.search as string
+    try {
+        console.log('what is happening')
+        const books = await searchBooks(search);
+        console.log('hey there')
+        return res.status(200).json({data: books, message: 'success'});
+    }
+    catch (err: any) {
+        return res.status(500).json({ message: err.message });
+    }
 }
