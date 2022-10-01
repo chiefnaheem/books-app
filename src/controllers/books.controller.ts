@@ -109,9 +109,9 @@ export const getBooksByTitle = async (req: Request, res: Response) => {
 export const searchBooksController = async (req: Request, res: Response) => {
     const search = req.query.search as string
     try {
-        console.log('what is happening')
+        
         const books = await searchBooks(search);
-        console.log('hey there')
+        
         return res.status(200).json({data: books, message: 'success'});
     }
     catch (err: any) {
