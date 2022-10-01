@@ -24,8 +24,6 @@ app.set('view engine', 'jade');
 
 //Routes
 app.use('/api/v1', router);
-
-
 app.use("/testing", (req: Request, res: Response, next: NextFunction) => {
   res.send('Hi there')
 });
