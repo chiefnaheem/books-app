@@ -3897,6 +3897,13 @@ jest-message-util@^27.5.1:
     slash "^3.0.0"
     stack-utils "^2.0.3"
 
+jest-mock-extended@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/jest-mock-extended/-/jest-mock-extended-3.0.1.tgz#5f109d5e1da62851ffc9126a01e83cd6470b810b"
+  integrity sha512-RF4Ow8pXvbRuEcCTj56oYHmig5311BSFvbEGxPNYL51wGKGu93MvVQgx0UpFmjqyBXIcElkZo2Rke88kR1iSKQ==
+  dependencies:
+    ts-essentials "^7.0.3"
+
 jest-mock@^27.5.1:
   version "27.5.1"
   resolved "https://registry.yarnpkg.com/jest-mock/-/jest-mock-27.5.1.tgz#19948336d49ef4d9c52021d34ac7b5f36ff967d6"
@@ -5485,7 +5492,7 @@ superagent@^8.0.0:
     readable-stream "^4.2.0"
     semver "^7.3.7"
 
-supertest@^6.2.1:
+supertest@^6.2.4:
   version "6.2.4"
   resolved "https://registry.yarnpkg.com/supertest/-/supertest-6.2.4.tgz#3dcebe42f7fd6f28dd7ac74c6cba881f7101b2f0"
   integrity sha512-M8xVnCNv+q2T2WXVzxDECvL2695Uv2uUj2O0utxsld/HRyJvOU8W9f1gvsYxSNU4wmIe0/L/ItnpU4iKq0emDA==
@@ -5640,6 +5647,11 @@ transformers@2.1.0:
     css "~1.0.8"
     promise "~2.0"
     uglify-js "~2.2.5"
+
+ts-essentials@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/ts-essentials/-/ts-essentials-7.0.3.tgz#686fd155a02133eedcc5362dc8b5056cde3e5a38"
+  integrity sha512-8+gr5+lqO3G84KdiTSMRLtuyJ+nTBVRKuCrK4lidMPdVeEp0uqC875uE5NMcaA7YYMN7XsNiFQuMvasF8HT/xQ==
 
 ts-jest@^27.1.2:
   version "27.1.5"

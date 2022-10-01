@@ -10,7 +10,7 @@ export const postBookController = async (req: Request, res: Response) => {
     }
     try {
         const newBook = await postBook(title, author, genre);
-        return res.status(200).json(newBook);
+        return res.status(201).json(newBook);
     }
     catch (err: any) {
         return res.status(500).json({ message: err.message });
