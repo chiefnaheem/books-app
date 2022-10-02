@@ -72,6 +72,8 @@ Postman Documentation Link:
 
 https://documenter.getpostman.com/view/18352675/2s83tDnXLB
 
+open the document in your postman and run the requests with 'BOOKS-APP' environment
+
 
 <!-- ## Test
 
