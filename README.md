@@ -33,7 +33,7 @@ Create environment
 Make your own environment with copy from .env.example and edit some value.
 
 cp .env.example .env
-Jump to details
+ 
 
 Database Migration
 For this project, heroku provisioned postgres server was used
