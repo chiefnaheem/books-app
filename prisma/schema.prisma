@@ -8,7 +8,7 @@ generator client {
 generator erd {
   provider = "prisma-erd-generator"
   includeRelationFromFields = true
-  output   = "../dist/erd.png"
+  output   = "../dist/erd.md"
 }
 
 datasource db {

@@ -122,6 +122,8 @@ erDiagram
     Int id PK 
     Int salary  
     Int personId  
+    DateTime createdAt  
+    DateTime updatedAt  
     }
   
 
@@ -129,6 +131,8 @@ erDiagram
     Int id PK 
     Int studentNumber  
     Int personId  
+    DateTime createdAt  
+    DateTime updatedAt  
     }
   
 
@@ -138,6 +142,8 @@ erDiagram
     String city  
     String country  
     Int personId  
+    DateTime createdAt  
+    DateTime updatedAt  
     }
   
 
@@ -146,6 +152,8 @@ erDiagram
     String model  
     String plateNumber  
     Int personId  
+    DateTime createdAt  
+    DateTime updatedAt  
     }
   
 
@@ -154,11 +162,13 @@ erDiagram
     DateTime date  
     String distance  
     Int vehicleId  
+    DateTime createdAt  
+    DateTime updatedAt  
     }
   
     Professor o|--|| Person : "person"
     Student o|--|| Person : "person"
     Address o|--|| Person : "person"
     Vehicle o|--|| Person : "person"
-    Drive o|--|| Vehicle : "vehicle"
+    Drive o|--|o Vehicle : "vehicle"
 ```
