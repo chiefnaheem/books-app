@@ -1,0 +1,573 @@
+{
+  "enums": [],
+  "models": [
+    {
+      "name": "Person",
+      "dbName": null,
+      "fields": [
+        {
+          "name": "id",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": true,
+          "isReadOnly": false,
+          "hasDefaultValue": true,
+          "type": "Int",
+          "default": {
+            "name": "autoincrement",
+            "args": []
+          },
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "name",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "String",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "address",
+          "kind": "object",
+          "isList": false,
+          "isRequired": false,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "Address",
+          "relationName": "AddressToPerson",
+          "relationFromFields": [],
+          "relationToFields": [],
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "vehicle",
+          "kind": "object",
+          "isList": false,
+          "isRequired": false,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "Vehicle",
+          "relationName": "PersonToVehicle",
+          "relationFromFields": [],
+          "relationToFields": [],
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "professor",
+          "kind": "object",
+          "isList": false,
+          "isRequired": false,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "Professor",
+          "relationName": "PersonToProfessor",
+          "relationFromFields": [],
+          "relationToFields": [],
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "student",
+          "kind": "object",
+          "isList": false,
+          "isRequired": false,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "Student",
+          "relationName": "PersonToStudent",
+          "relationFromFields": [],
+          "relationToFields": [],
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "createdAt",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": true,
+          "type": "DateTime",
+          "default": {
+            "name": "now",
+            "args": []
+          },
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "updatedAt",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "DateTime",
+          "isGenerated": false,
+          "isUpdatedAt": true
+        }
+      ],
+      "primaryKey": null,
+      "uniqueFields": [],
+      "uniqueIndexes": [],
+      "isGenerated": false
+    },
+    {
+      "name": "Professor",
+      "dbName": null,
+      "fields": [
+        {
+          "name": "id",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": true,
+          "isReadOnly": false,
+          "hasDefaultValue": true,
+          "type": "Int",
+          "default": {
+            "name": "autoincrement",
+            "args": []
+          },
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "salary",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "Int",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "person",
+          "kind": "object",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "Person",
+          "relationName": "PersonToProfessor",
+          "relationFromFields": [
+            "personId"
+          ],
+          "relationToFields": [
+            "id"
+          ],
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "personId",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": true,
+          "isId": false,
+          "isReadOnly": true,
+          "hasDefaultValue": false,
+          "type": "Int",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        }
+      ],
+      "primaryKey": null,
+      "uniqueFields": [],
+      "uniqueIndexes": [],
+      "isGenerated": false
+    },
+    {
+      "name": "Student",
+      "dbName": null,
+      "fields": [
+        {
+          "name": "id",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": true,
+          "isReadOnly": false,
+          "hasDefaultValue": true,
+          "type": "Int",
+          "default": {
+            "name": "autoincrement",
+            "args": []
+          },
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "studentNumber",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "Int",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "person",
+          "kind": "object",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "Person",
+          "relationName": "PersonToStudent",
+          "relationFromFields": [
+            "personId"
+          ],
+          "relationToFields": [
+            "id"
+          ],
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "personId",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": true,
+          "isId": false,
+          "isReadOnly": true,
+          "hasDefaultValue": false,
+          "type": "Int",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        }
+      ],
+      "primaryKey": null,
+      "uniqueFields": [],
+      "uniqueIndexes": [],
+      "isGenerated": false
+    },
+    {
+      "name": "Address",
+      "dbName": null,
+      "fields": [
+        {
+          "name": "id",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": true,
+          "isReadOnly": false,
+          "hasDefaultValue": true,
+          "type": "Int",
+          "default": {
+            "name": "autoincrement",
+            "args": []
+          },
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "street",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "String",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "city",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "String",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "country",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "String",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "person",
+          "kind": "object",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "Person",
+          "relationName": "AddressToPerson",
+          "relationFromFields": [
+            "personId"
+          ],
+          "relationToFields": [
+            "id"
+          ],
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "personId",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": true,
+          "isId": false,
+          "isReadOnly": true,
+          "hasDefaultValue": false,
+          "type": "Int",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        }
+      ],
+      "primaryKey": null,
+      "uniqueFields": [],
+      "uniqueIndexes": [],
+      "isGenerated": false
+    },
+    {
+      "name": "Vehicle",
+      "dbName": null,
+      "fields": [
+        {
+          "name": "id",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": true,
+          "isReadOnly": false,
+          "hasDefaultValue": true,
+          "type": "Int",
+          "default": {
+            "name": "autoincrement",
+            "args": []
+          },
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "model",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "String",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "plateNumber",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "String",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "drive",
+          "kind": "object",
+          "isList": false,
+          "isRequired": false,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "Drive",
+          "relationName": "DriveToVehicle",
+          "relationFromFields": [],
+          "relationToFields": [],
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "personId",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": true,
+          "isId": false,
+          "isReadOnly": true,
+          "hasDefaultValue": false,
+          "type": "Int",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "person",
+          "kind": "object",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "Person",
+          "relationName": "PersonToVehicle",
+          "relationFromFields": [
+            "personId"
+          ],
+          "relationToFields": [
+            "id"
+          ],
+          "isGenerated": false,
+          "isUpdatedAt": false
+        }
+      ],
+      "primaryKey": null,
+      "uniqueFields": [],
+      "uniqueIndexes": [],
+      "isGenerated": false
+    },
+    {
+      "name": "Drive",
+      "dbName": null,
+      "fields": [
+        {
+          "name": "id",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": true,
+          "isReadOnly": false,
+          "hasDefaultValue": true,
+          "type": "Int",
+          "default": {
+            "name": "autoincrement",
+            "args": []
+          },
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "date",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "DateTime",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "distance",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "String",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "vehicle",
+          "kind": "object",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "hasDefaultValue": false,
+          "type": "Vehicle",
+          "relationName": "DriveToVehicle",
+          "relationFromFields": [
+            "vehicleId"
+          ],
+          "relationToFields": [
+            "id"
+          ],
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "vehicleId",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": true,
+          "isId": false,
+          "isReadOnly": true,
+          "hasDefaultValue": false,
+          "type": "Int",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        }
+      ],
+      "primaryKey": null,
+      "uniqueFields": [],
+      "uniqueIndexes": [],
+      "isGenerated": false
+    }
+  ],
+  "types": []
+}

@@ -1,4 +1,4 @@
-
+<!-- 
 # **Books App**
 
 ## **Description**
@@ -103,4 +103,62 @@ allowed commit types include the following:
     "feat", "fix", "docs", "style", "refactor", "test", "revert"
 
 
+ -->
 
+
+
+```mermaid
+erDiagram
+
+  Person {
+    Int id PK 
+    String name  
+    DateTime createdAt  
+    DateTime updatedAt  
+    }
+  
+
+  Professor {
+    Int id PK 
+    Int salary  
+    Int personId  
+    }
+  
+
+  Student {
+    Int id PK 
+    Int studentNumber  
+    Int personId  
+    }
+  
+
+  Address {
+    Int id PK 
+    String street  
+    String city  
+    String country  
+    Int personId  
+    }
+  
+
+  Vehicle {
+    Int id PK 
+    String model  
+    String plateNumber  
+    Int personId  
+    }
+  
+
+  Drive {
+    Int id PK 
+    DateTime date  
+    String distance  
+    Int vehicleId  
+    }
+  
+    Professor o|--|| Person : "person"
+    Student o|--|| Person : "person"
+    Address o|--|| Person : "person"
+    Vehicle o|--|| Person : "person"
+    Drive o|--|| Vehicle : "vehicle"
+```

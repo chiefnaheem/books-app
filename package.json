@@ -19,7 +19,7 @@
     "prettier:fix": "prettier --write 'src/**/*.ts'"
   },
   "dependencies": {
-    "@prisma/client": "^4.4.0",
+    "@prisma/client": "^4.5.0",
     "@types/node": "^15.14.9",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
@@ -50,6 +50,7 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-typescript": "^7.16.7",
+    "@mermaid-js/mermaid-cli": "^9.1.7",
     "@types/bcrypt": "^5.0.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie-parser": "^1.4.2",
@@ -76,7 +77,8 @@
     "lint-staged": "12.1.7",
     "nodemon": "^2.0.15",
     "prettier": "2.5.1",
-    "prisma": "^4.4.0",
+    "prisma": "^4.5.0",
+    "prisma-erd-generator": "^1.2.1",
     "supertest": "^6.2.4"
   },
   "husky": {
